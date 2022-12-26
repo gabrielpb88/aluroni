@@ -4,13 +4,15 @@ import Buscador from './Buscador';
 import Filtros from './Filtros';
 import Ordenador, { OpcoesOrdenador } from './Ordenador';
 import Itens from './Itens';
+import temaStyle from 'styles/Tema.module.scss';
+
 export default function Cardapio() {
   const [busca, setBusca] = useState('');
   const [filtro, setFiltro] = useState<number | null>(null);
   const [ordenador, setOrdenador] = useState<OpcoesOrdenador>('');
   return (
-    <section className={s.cardapio}>
-      <h3 className={s.cardapio__titulo}>Cardápio</h3>
+    <section>
+      <h3 className={temaStyle.titulo}>Cardápio</h3>
       <Buscador busca={busca} setBusca={setBusca} />
       <div className={s.cardapio__filtros}>
         <Filtros filtro={filtro} setFiltro={setFiltro} />
