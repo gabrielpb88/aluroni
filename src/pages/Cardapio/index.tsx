@@ -4,14 +4,12 @@ import Buscador from './Buscador';
 import Filtros from './Filtros';
 import Ordenador, { OpcoesOrdenador } from './Ordenador';
 import Itens from './Itens';
-import Menu from '../../components/menu';
 export default function Cardapio() {
   const [busca, setBusca] = useState('');
   const [filtro, setFiltro] = useState<number | null>(null);
   const [ordenador, setOrdenador] = useState<OpcoesOrdenador>('');
   return (
     <main>
-      <Menu />
       <header className={s.header}>
         <div className={s.header__text}>A casa do código e da massa</div>
       </header>
