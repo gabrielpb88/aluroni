@@ -1,12 +1,20 @@
-import cardapio from 'data/itens.json';
+import cardapio from 'data/cardapio.json';
 import s from './Inicio.module.scss';
 import temaStyle from 'styles/Tema.module.scss';
 import nossaCasa from 'assets/nossa_casa.png';
+import { useNavigate } from 'react-router-dom';
+import { Prato } from 'types/Prato';
+
 export default function Inicio() {
   let pratosRecomendados = [...cardapio];
   pratosRecomendados = pratosRecomendados
     .sort(() => 0.5 - Math.random())
     .slice(0, 3);
+
+  const navigate = useNavigate();
+  function redirecionarParaDetalhes(prato: Prato) {
+    navigate(`/prato/${prato.id}`, { state: { prato } });
+  }
   return (
     <section>
       <h3 className={temaStyle.titulo}>Recomendações da Cozinha</h3>
@@ -16,7 +24,13 @@ export default function Inicio() {
             <div className={s.recomendado__imagem}>
               <img src={item.photo} alt={item.title} />
             </div>
-            <button className={s.recomendado__botao}>Ver mais</button>
+            <button
+              className={s.recomendado__botao}
+              onClick={() => {
+                redirecionarParaDetalhes(item);
+              }}>
+              Ver mais
+            </button>
           </div>
         ))}
       </div>
