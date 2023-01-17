@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import opcoes from './opcoes.json';
 import s from './Ordenador.module.scss';
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
 
 export type OpcoesOrdenador = '' | 'porcao' | 'qtd_pessoas' | 'preco';
@@ -11,7 +11,7 @@ interface IOrdenador {
   setOrdenador: React.Dispatch<React.SetStateAction<OpcoesOrdenador>>;
 }
 
-export default function Ordenador({ ordenador, setOrdenador }: IOrdenador) {
+function Ordenador({ ordenador, setOrdenador }: IOrdenador) {
   const [aberto, setAberto] = useState(false);
   const nomeOrdenador =
     ordenador && opcoes.find((opcao) => opcao.value === ordenador)?.nome;
@@ -46,3 +46,5 @@ export default function Ordenador({ ordenador, setOrdenador }: IOrdenador) {
     </button>
   );
 }
+
+export default memo(Ordenador);
