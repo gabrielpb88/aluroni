@@ -7,7 +7,6 @@ import { memo } from 'react';
 function Item(props: Prato) {
   const { id, title, description, photo } = props;
   const navigate = useNavigate();
-  id == 1 && console.log('aqui');
   return (
     <div
       className={s.item}
